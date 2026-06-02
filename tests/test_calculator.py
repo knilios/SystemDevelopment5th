@@ -159,4 +159,35 @@ class TestDivision:
         assert result == expected
 
 
+class TestInvalidInput:
+    """Tests for invalid input handling."""
+    
+    def test_add_too_large_value(self, calc):
+        """Test adding a value that exceeds the maximum limit."""
+        # Arrange
+        a = 1000000
+        b = 1000000
+        
+        # Act & Assert
+        with pytest.raises(InvalidInputException):
+            calc.add(a, b)
+            
+    def test_add_too_small_value(self, calc):
+        """Test adding a value that is below the minimum limit."""
+        # Arrange
+        a = -1000000
+        b = -1000000
+        
+        # Act & Assert
+        with pytest.raises(InvalidInputException):
+            calc.add(a, b)
 
+    def test_add_invalid_input(self, calc):
+        """Test adding invalid input."""
+        # Arrange
+        a = "5"
+        b = 3
+        
+        # Act & Assert
+        with pytest.raises(InvalidInputException):
+            calc.add(a, b)
