@@ -111,7 +111,6 @@ class TestSubtraction:
 
     def test_subtract_positive_numbers(self, calc):
         """Test subtracting positive numbers."""
-        # TODO: Implement
         
         # Arrange
         a = 5
@@ -157,6 +156,16 @@ class TestDivision:
         
         # Assert
         assert result == expected
+
+    def test_divide_by_zero(self, calc):
+        """ Test dviding by zero"""
+        # Arrange
+        a = 67
+        b = 0
+
+        # Act and Assert
+        with pytest.raises(ValueError):
+            calc.divide(a,b)
 
 
 class TestInvalidInput:
