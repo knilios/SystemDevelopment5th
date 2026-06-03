@@ -5,6 +5,7 @@ Test suite for the Calculator class.
 import pytest
 from calculator.calculator import Calculator, InvalidInputException
 
+
 @pytest.fixture
 def calc():
     """Fixture to create a Calculator instance."""
@@ -111,15 +112,15 @@ class TestSubtraction:
 
     def test_subtract_positive_numbers(self, calc):
         """Test subtracting positive numbers."""
-        
+
         # Arrange
         a = 5
         b = 3
         expected = 2
-        
+
         # Act
         result = calc.subtract(a, b)
-        
+
         # Assert
         assert result == expected
 
@@ -133,10 +134,10 @@ class TestMultiplication:
         a = 5
         b = 3
         expected = 15
-        
+
         # Act
         result = calc.multiply(a, b)
-        
+
         # Assert
         assert result == expected
 
@@ -150,43 +151,43 @@ class TestDivision:
         a = 10
         b = 2
         expected = 5
-        
+
         # Act
         result = calc.divide(a, b)
-        
+
         # Assert
         assert result == expected
 
     def test_divide_by_zero(self, calc):
-        """ Test dviding by zero"""
+        """Test dviding by zero"""
         # Arrange
         a = 67
         b = 0
 
         # Act and Assert
         with pytest.raises(ValueError):
-            calc.divide(a,b)
+            calc.divide(a, b)
 
 
 class TestInvalidInput:
     """Tests for invalid input handling."""
-    
+
     def test_add_too_large_value(self, calc):
         """Test adding a value that exceeds the maximum limit."""
         # Arrange
         a = 1000000
         b = 1000000
-        
+
         # Act & Assert
         with pytest.raises(InvalidInputException):
             calc.add(a, b)
-            
+
     def test_add_too_small_value(self, calc):
         """Test adding a value that is below the minimum limit."""
         # Arrange
         a = -1000000
         b = -1000000
-        
+
         # Act & Assert
         with pytest.raises(InvalidInputException):
             calc.add(a, b)
@@ -196,7 +197,7 @@ class TestInvalidInput:
         # Arrange
         a = "5"
         b = 3
-        
+
         # Act & Assert
         with pytest.raises(InvalidInputException):
             calc.add(a, b)
